@@ -1,38 +1,119 @@
 .App {
-  text-align: center;
+    display: flex;
+    justify-content: center;
+    background-color: lightgray;
+
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+    width: 73%;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    background-color: white;
+    overflow-y: auto;
+    max-height: 280px;
+    border-radius: 2%;
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+.student {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding: 5px;
+    border-bottom: lightgray 1px solid;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.student__text-wrapper {
+    display: flex;
+    /*justify-content: start;*/
+    /*align-items: start;*/
+    /*position: relative;*/
 }
 
-.App-link {
-  color: #61dafb;
+.student-img {
+    margin-top: 7px;
+    width: 55px;
+    height: 55px;
+    border-radius: 100%;
+    border: lightgray 1px solid;
+    display: flex;
+    justify-content: center;
+    margin-right: 15px;
+    margin-left: 4px;
+    align-items: center;
+    overflow: hidden;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.student-img img {
+    width: 100%;
+
+}
+
+.student-description {
+
+}
+
+.student-description-inner {
+    font-family: Tahoma;
+    font-size: 8px;
+    color: gray;
+    padding-bottom: 5px;
+    padding-left: 10px;
+}
+.student-description-inner-line {
+    padding-bottom: 1px;
+}
+
+.student-name {
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-bottom: 5px;
+    width: 205px
+
+}
+
+.student-input {
+    margin:0 3px ;
+    border: none;
+    width: 97%;
+    border-bottom: lightgray 1px solid;
+    font-family: Tahoma;
+    font-size: 8px;
+    font-weight: lighter;
+}
+.student-add-tag {
+    display: flex;
+    align-items: start;
+    padding:  3px 0 3px 0;
+    border: none;
+    width: 30%;
+    border-bottom: lightgray 1px solid;
+    font-family: Tahoma;
+    font-size: 6px;
+    background-color: white;
+    color: gray;
+}
+.student-button {
+    background-color: white;
+    border: none;
+    font-weight: lighter;
+    font-size: 30px;
+    color: lightgray;
+
+}
+input:hover {
+    color: black;
+    outline: 0;
+}
+
+
+.student-grades {
+    padding-left: 10px;
+    font-family: Tahoma;
+    font-size: 8px;
+    color: gray;
+
 }
