@@ -5,20 +5,20 @@ import Student from "./Student";
 
 function App() {
     const [list, setList] = useState([])
-    const [imputValue, setImputValue] = useState('')
-    const [imputValueTag, setImputValueTag] = useState('')
-    const [imputValueTagSearch, setImputValueTagSearch] = useState('')
+    const [inputValue, setInputValue] = useState('')
+    const [inputValueTag, setInputValueTag] = useState('')
+    const [inputValueTagSearch, setInputValueTagSearch] = useState('')
     useEffect(() => {
         axios.get('https://api.hatchways.io/assessment/students')
             .then(res => setList(res.data.students.map(student => ({...student, buttonOpened: false, tag: []}))))
             .catch(err => console.log(err));
     }, [])
     const changeInput = (e) => {
-        setImputValue(e.target.value)
+        setInputValue(e.target.value)
         const filteredList = list.filter(
             student =>
-                (student.firstName.toUpperCase().includes(imputValue.toUpperCase()) ||
-                    student.lastName.toUpperCase().includes(imputValue.toUpperCase()))
+                (student.firstName.toUpperCase().includes(inputValue.toUpperCase()) ||
+                    student.lastName.toUpperCase().includes(inputValue.toUpperCase()))
         )
         setList(filteredList)
     }
@@ -29,7 +29,7 @@ function App() {
         setList(temp)
     }
     const changeInputTagSearch = (e) => {
-        setImputValueTagSearch(e.target.value)
+        setInputValueTagSearch(e.target.value)
         const filteredList = list.filter(
              student => student.tag.some(tag =>(tag.value.toUpperCase().includes(imputValueTagSearch.toUpperCase() ))))
                  // && student.tag.filter(tag =>   (tag.value.toUpperCase() === 'A') ))
@@ -51,7 +51,7 @@ function App() {
                 <div>
                     <input className="student-input" placeholder="Search by name"
                            type='text' onChange={(e) => changeInput(e)}
-                           value={imputValue}
+                           value={inputValue}
                     />
                 </div>
                 <div>
@@ -59,14 +59,14 @@ function App() {
                            placeholder="Search by tag"
                            type='text'
                            onChange={(e) => changeInputTagSearch(e)}
-                           value={imputValueTagSearch}
+                           value={inputValueTagSearch}
                     />
                 </div>
                 {list ? list.map(student => <Student
                     key={student.id}
                     student={student}
                     changeButton={changeButton}
-                    imputValueTag={imputValueTag}
+                    imputValueTag={inputValueTag}
                     changeInputTag={changeInputTag}
                 />) : null}
             </div>
