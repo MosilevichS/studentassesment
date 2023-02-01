@@ -36,7 +36,7 @@ const Student = (props) => {
                                     placeholder={"Add a tag"}
                                     id={student.email}
                                     value={initialValue}
-                                    onDoubleClick={initialValue !==""?()=>props.changeInputTag(student.email,initialValue):null}
+                                    onDoubleClick={initialValue !==""?()=>props.changeImputeTag(student.email,initialValue):null}
                         >
                         </input>
                         </div>
