@@ -10,24 +10,26 @@ function App() {
     useEffect(() => {
         axios.get('https://api.hatchways.io/assessment/students')
             .then(res => setStudents
-            (res.data.students.map(student => ({...student, buttonOpened: false, tag: []}))))
+            (res.data.students.map(student => ({...student, buttonOpened: false, tags: []}))))
             .catch(err => console.log(err));
     }, [])
     const regExpName = new RegExp(`${searchName}`, "i")
     const regExpTag = new RegExp(`${searchTag}`, "i")
     const searchFilter = (el) => {
         if (searchName === '') return el
-        else if (regExpName.test(el.firstName) || regExpName.test(el.lastName)) return el
+        if (regExpName.test(el.firstName) || regExpName.test(el.lastName)) return el
     }
     const searchFilterTag = (el) => {
         if (searchTag === '') return el
-        if (el.tag && regExpTag.test(el.tag)) return el
+        for (let i = 0; i < el.tags.length; i++) {
+            if  (el.tags[i].value && regExpTag.test(el.tags[i].value)) return el
+        }
     }
 
     const changeImputeTag = (id, tagValue) => {
         const temp = students.map(student =>
             student.email === id ?
-                {...student, tag: [...student.tag, {id: Math.random(), value: tagValue}]} : student)
+                {...student, tags: [...student.tags, {id: Math.random(), value: tagValue}]} : student)
         setStudents(temp)
     }
 
@@ -36,7 +38,6 @@ function App() {
             student.email === id ? {...student, buttonOpened: !student.buttonOpened} : student)
         setStudents(temp)
     }
-    console.log(students)
     return (
         <div className="App">
             <div className="container">
@@ -62,7 +63,7 @@ function App() {
                                  regExpName={regExpName}
                                  regExpTag={regExpTag}
                                  changeButton={changeButton}
-                                 // imputeValueTag={imputeValueTag}
+
                                  changeImputeTag={changeImputeTag}
                         />
                     </div>)}

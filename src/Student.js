@@ -26,8 +26,8 @@ const Student = (props) => {
                         <div className="student-description-inner-line"> Company: {student.company} </div>
                         <div className="student-description-inner-line"> Skill: {student.skill} </div>
                         <div className="student-description-inner-line"> Average: {countAverageGrades()}%</div>
-                        {student.tag.length > 0?
-                            student.tag.map(tag => <button key = {tag.id}>{tag.value}</button>
+                        {student.tags.length > 0?
+                            student.tags.map(tag => <button key = {tag.id}>{tag.value}</button>
                             ):null
                         }
                         <div><input className="student-add-tag"
